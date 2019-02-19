@@ -7,7 +7,7 @@ function yesno() {
     fi
 }
 
-bashrcSite="bashrcsite.com"
+bashrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.bashrc"
 params="~/.bashrc $bashrcSite"
 if [ -f ~/.bashrc ]; then
     echo "bashrc already exists. Overwrite? [y/n]"
@@ -18,14 +18,14 @@ else
 fi
 source ~/.bashrc
 
-colorsSite="colors.com"
+colorsSite="https://raw.githubusercontent.com/blueshirts/darcula/master/colors/darcula.vim"
 colorsDir="~/.vim/colors"
 if [ ! -d "$colorsDir" ]; then
     mkdir -p $colorsDir
 fi
 curl -Lso $colorsDir/darcula.vim $colorsSite
 
-vimrcSite="vimrcsite.com"
+vimrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.vimrc"
 if [ -z "$MYVIMRC" ]; then
     params="~/.vimrc $vimrcSite"
     echo "vimrc does not exist. Downloading to ~/.vimrc..."
