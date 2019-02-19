@@ -27,12 +27,16 @@ fi
 curl -Lso $colorsDir/darcula.vim $colorsSite
 
 vimrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.vimrc"
-if [ -z "$MYVIMRC" ]; then
+if [ -z "$MYVIMRC" || ! -f $HOME/.vimrc ]; then
     params="$HOME/.vimrc $vimrcSite"
     echo "vimrc does not exist. Downloading to ~/.vimrc..."
     curl -Lso $params
 else
-    site="$MYVIMRC $vimrcSite"
+    if [ -z "$MYVIMRC" ]; then
+        site="$MYVIMRC $vimrcSite"
+    else
+        site="$HOME/.vimrc"
+    fi
     echo "vimrc already exists. Overwrite? [y/n]"
     yesno $params
 fi
