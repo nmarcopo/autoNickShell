@@ -3,8 +3,7 @@ function yesno() {
     read yn
     if [ "$yn" = "y" ] || [ "$yn" = "Y" ]; then
         echo "Backing up your $1 to $1.bak..."
-
-#        curl -Lso $@
+        curl -s $@ > $1
     fi
 }
 
