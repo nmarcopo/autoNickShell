@@ -2,24 +2,25 @@
 function yesno() {
     read yn
     if [ "$yn" = "y" ] || [ "$yn" = "Y" ]; then
-        echo $@
-        #curl -Lso $@
+        echo "Backing up your $1 to $1.bak..."
+
+#        curl -Lso $@
     fi
 }
 
 bashrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.bashrc"
-params="~/.bashrc $bashrcSite"
-if [ -f ~/.bashrc ]; then
+params="$HOME/.bashrc $bashrcSite"
+if [ -f $HOME/.bashrc ]; then
     echo "bashrc already exists. Overwrite? [y/n]"
     yesno $params
 else
     echo "bashrc does not exist. Downloading to ~/.bashrc..."
     curl -Lso $params
 fi
-source ~/.bashrc
+source $HOME/.bashrc
 
 colorsSite="https://raw.githubusercontent.com/blueshirts/darcula/master/colors/darcula.vim"
-colorsDir="~/.vim/colors"
+colorsDir="$HOME/.vim/colors"
 if [ ! -d "$colorsDir" ]; then
     mkdir -p $colorsDir
 fi
@@ -27,7 +28,7 @@ curl -Lso $colorsDir/darcula.vim $colorsSite
 
 vimrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.vimrc"
 if [ -z "$MYVIMRC" ]; then
-    params="~/.vimrc $vimrcSite"
+    params="$HOME/.vimrc $vimrcSite"
     echo "vimrc does not exist. Downloading to ~/.vimrc..."
     curl -Lso $params
 else
