@@ -24,7 +24,9 @@ colorsDir="$HOME/.vim/colors"
 if [ ! -d "$colorsDir" ]; then
     mkdir -p $colorsDir
 fi
-curl -Lso $colorsDir/darcula.vim $colorsSite
+if [ ! -f $colorsDir/darcula.vim ]; then
+    curl -Lso $colorsDir/darcula.vim $colorsSite
+fi
 
 vimrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.vimrc"
 if [ -z "$MYVIMRC" ] && [ ! -f $HOME/.vimrc ]; then
