@@ -16,7 +16,7 @@ else
     echo "bashrc does not exist. Downloading to ~/.bashrc..."
     curl -Lso $params
 fi
-source $HOME/.bashrc
+echo "Don't forget to source your bashrc!!!!"
 
 colorsSite="https://raw.githubusercontent.com/blueshirts/darcula/master/colors/darcula.vim"
 colorsDir="$HOME/.vim/colors"
