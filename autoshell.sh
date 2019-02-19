@@ -27,7 +27,7 @@ fi
 curl -Lso $colorsDir/darcula.vim $colorsSite
 
 vimrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.vimrc"
-if [ -z "$MYVIMRC" || ! -f $HOME/.vimrc ]; then
+if [ -z "$MYVIMRC" || ! -f "$HOME/.vimrc" ]; then
     params="$HOME/.vimrc $vimrcSite"
     echo "vimrc does not exist. Downloading to ~/.vimrc..."
     curl -Lso $params
