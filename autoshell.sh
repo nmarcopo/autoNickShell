@@ -21,9 +21,11 @@ echo "Don't forget to source your bashrc!!!!"
 colorsSite="https://raw.githubusercontent.com/blueshirts/darcula/master/colors/darcula.vim"
 colorsDir="$HOME/.vim/colors"
 if [ ! -d "$colorsDir" ]; then
+    echo "creating colors directory..."
     mkdir -p $colorsDir
 fi
 if [ ! -f $colorsDir/darcula.vim ]; then
+    echo "downloading darcula..."
     curl -Lso $colorsDir/darcula.vim $colorsSite
 fi
 
