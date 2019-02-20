@@ -3,14 +3,18 @@ function yesno() {
     read yn
     if [ "$yn" = "y" ] || [ "$yn" = "Y" ]; then
         echo "Backing up your $1 to $1.bak..."
+        cp $1 $1.bak
         curl -s $@ > $1
+    elif [ "$yn" = "a" ] || [ "$yn" = "A"]; then
+        echo "Appending to your current $1..."
+        curl -s $@ >> $1
     fi
 }
 
 bashrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.bashrc"
 params="$HOME/.bashrc $bashrcSite"
 if [ -f $HOME/.bashrc ]; then
-    echo "bashrc already exists. Overwrite? [y/n]"
+    echo "bashrc already exists. Overwrite? [y/n/a]"
     yesno $params
 else
     echo "bashrc does not exist. Downloading to ~/.bashrc..."
@@ -40,7 +44,7 @@ else
     else
         site="$HOME/.vimrc"
     fi
-    echo "vimrc already exists. Overwrite? [y/n]"
+    echo "vimrc already exists. Overwrite? [y/n/a]"
     yesno $params
 fi
 
