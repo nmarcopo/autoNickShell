@@ -11,6 +11,12 @@ function yesno() {
     fi
 }
 
+lsColorsSite="https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
+if [ ! -f $HOME/.dircolors ]; then
+    curl -s $lsColorsSite > $HOME/.dircolors
+    echo 'eval $(dircolors -b $HOME/.dircolors)' >> $HOME/.bashrc
+fi
+
 bashrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.bashrc"
 params="$HOME/.bashrc $bashrcSite"
 if [ -f $HOME/.bashrc ]; then
