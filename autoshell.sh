@@ -40,9 +40,9 @@ if [ -z "$MYVIMRC" ] && [ ! -f $HOME/.vimrc ]; then
     curl -Lso $params
 else
     if [ -z "$MYVIMRC" ]; then
-        site="$MYVIMRC $vimrcSite"
+        params="$MYVIMRC $vimrcSite"
     else
-        site="$HOME/.vimrc"
+        params="$HOME/.vimrc $vimrcSite"
     fi
     echo "vimrc already exists. Overwrite? [y/n/a]"
     yesno $params
