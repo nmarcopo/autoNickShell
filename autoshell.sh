@@ -4,10 +4,10 @@ function yesno() {
     if [ "$yn" = "y" ] || [ "$yn" = "Y" ]; then
         echo "Backing up your $1 to $1.bak..."
         cp $1 $1.bak
-        curl -s $@ > $1
+        curl -Ls $@ > $1
     elif [ "$yn" = "a" ] || [ "$yn" = "A"]; then
         echo "Appending to your current $1..."
-        curl -s $@ >> $1
+        curl -Ls $@ >> $1
     fi
 }
 
@@ -15,7 +15,7 @@ lsColorsSite="https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
 params="$HOME/.dircolors $lsColorsSite"
 if [ ! -f $HOME/.dircolors ]; then
     echo "downloading dircolors..."
-    curl -s $lsColorsSite > $HOME/.dircolors
+    curl -Ls $lsColorsSite > $HOME/.dircolors
 else
     echo "dircolors already exitsts. Overwrite? [y/n/a]"
     yesno $params
