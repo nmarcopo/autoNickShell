@@ -12,8 +12,13 @@ function yesno() {
 }
 
 lsColorsSite="https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
+params="$HOME/.dircolors $lsColorsSite"
 if [ ! -f $HOME/.dircolors ]; then
+    echo "downloading dircolors..."
     curl -s $lsColorsSite > $HOME/.dircolors
+else
+    echo "dircolors already exitsts. Overwrite? [y/n/a]"
+    yesno $params
 fi
 
 bashrcSite="https://raw.githubusercontent.com/nmarcopo/autoNickShell/master/.bashrc"
