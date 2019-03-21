@@ -63,3 +63,12 @@ map <C-l> <C-w>l
 set showtabline=2
 set timeoutlen=0
 set display=lastline
+
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" optional reset cursor on start:
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
