@@ -3,7 +3,7 @@ set foldcolumn=1
 set tabstop=4
 set autoindent
 set expandtab
-set cursorcolumn
+set cursorline
 
 colorscheme darcula
 
