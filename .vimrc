@@ -72,3 +72,7 @@ augroup myCmds
 au!
 autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
+
+" Smart indentation - helps with HTML
+filetype indent on
+let g:html_indent_inctags = "html,body,head,tbody"
