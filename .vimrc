@@ -76,3 +76,6 @@ augroup END
 " Smart indentation - helps with HTML
 filetype indent on
 let g:html_indent_inctags = "html,body,head,tbody"
+
+" Fix tmux colors
+set t_Co=256
